@@ -7,7 +7,7 @@ namespace Model
     {
         static void Main(string[] args)
         {
-            m
+            
         }
     }
 }
