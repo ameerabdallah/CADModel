@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing.Point;
 
 namespace Model
 {
@@ -6,7 +7,7 @@ namespace Model
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            m
         }
     }
 }
