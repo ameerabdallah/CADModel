@@ -4,6 +4,7 @@
  */
 
 using System;
+using System.Numerics;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,17 +12,20 @@ namespace Model.Models
 {
     public class Point
     {
-        public double x;
-        public double y;
-        public double z;
-
-        Point() { this.x = 0; this.y = 0; this.z = 0; }
-        Point(double x, double y, double z = 0)
+        private double x, y, z;
+        public double X{ get; set; }
+        public double Y { get; set; }
+        public double Z { get; set; }
+        
+        public Point() { X = 0; Y = 0; Z = 0; }
+        public Point(double X, double Y, double Z = 0)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this.X = X;
+            this.Y = Y;
+            this.Z = Z;
         }
+
+       
     }
     /* 
      * Holds vector val, and derivatives on the parameter that the derivatives are being calculated
@@ -51,12 +55,12 @@ namespace Model.Models
         }
         public VectorMath(Point p, double derivparam)
         {
-            x = p.x; y = p.y;
+            x = p.X; y = p.Y;
             dx = 0.0; dy = 0.0;
 
-            if (derivparam == p.x)
+            if (derivparam == p.X)
                 dx = 1.0;
-            if (derivparam == p.y)
+            if (derivparam == p.Y)
                 dy = 1.0;
         }
         //gets distance/length of the path

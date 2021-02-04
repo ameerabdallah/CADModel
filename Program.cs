@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 //using System.Drawing.Point;
 
 namespace Model
@@ -15,6 +16,11 @@ namespace Model
              * Create Circle
              * Create Ellipse 
              */
+
+            Model.Models.Point p = new Model.Models.Point(3, 4);
+
+            Console.WriteLine(p.X + " " + p.Y + " " + p.Z);
+
         }
     }
 }
