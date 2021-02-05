@@ -13,20 +13,94 @@ namespace Model.Models
     public class Point
     {
         private double x, y, z;
-        public double X{ get; set; }
+        public double X { get; set; }
         public double Y { get; set; }
         public double Z { get; set; }
         
-        public Point() { X = 0; Y = 0; Z = 0; }
+        public Point() { X = 0.0; Y = 0.0; Z = 0.0; }
         public Point(double X, double Y, double Z = 0)
         {
             this.X = X;
             this.Y = Y;
             this.Z = Z;
         }
-
-       
     }
+
+    public class Line
+    {
+        private Point startPoint, endPoint;
+        public Point StartPoint { get; set; }
+        public Point EndPoint { get; set; }
+
+        public Line() 
+        { 
+            startPoint = null;
+            endPoint = null; 
+        }
+        
+        public Line(Point startPoint, Point endPoint)
+        {
+            this.setPoints(startPoint, endPoint);
+        }
+
+        public Line(Line line2)
+        {
+            this.setPoints(line2.StartPoint, line2.EndPoint);
+        }
+
+        public void setPoints(Point startPoint, Point endPoint)
+        {
+            this.startPoint = startPoint;
+            this.endPoint = endPoint;
+        }
+    }
+
+    public class Circle
+    {
+        private Point location;
+        private double radius;
+
+        public Point Location { get; set; }
+        public double Radius { get; set; }
+
+        public Circle()
+        {
+            this.location = null;
+            this.radius = 0.0;
+        }
+
+        public Circle(Circle circle2)
+        {
+            this.location = circle2.Location;
+            this.radius = circle2.Radius;
+        }
+    }
+
+    public class Ellipse
+    {
+        private Point location;
+        private double majorRadius;
+        private double minorRadius;
+
+        public Point Location { get; set; }
+        public double MajorRadius { get; set; }
+        public double MinorRadius { get; set; }
+
+        public Ellipse()
+        {
+            this.location = null;
+            this.majorRadius = 0.0;
+            this.minorRadius = 0.0;
+        }
+
+        public Ellipse(Ellipse ellipse2)
+        {
+            this.location = ellipse2.location;
+            this.majorRadius = ellipse2.majorRadius;
+            this.minorRadius = ellipse2.minorRadius;
+        }
+    }
+
     /* 
      * Holds vector val, and derivatives on the parameter that the derivatives are being calculated
      */

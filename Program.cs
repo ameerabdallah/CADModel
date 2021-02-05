@@ -9,12 +9,12 @@ namespace Model
         static void Main(string[] args)
         {
             /*TODO: 
-             * Create Point Object
-             * Create Line Object
-             * Create Rectangle Object
+             * Create Point Object ✔
+             * Create Line Object ✔
+             * Create Rectangle Object 
              * Create Polygon
-             * Create Circle
-             * Create Ellipse 
+             * Create Circle ✔
+             * Create Ellipse ✔
              */
 
             Model.Models.Point p = new Model.Models.Point(3, 4);
