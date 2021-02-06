@@ -55,6 +55,39 @@ namespace Model.Models
         }
     }
 
+    public class Rectangle
+    {
+        Point corner0, corner1, corner2, corner3;
+        Point center;
+        Line line0, line1, line2, line3;
+        double length, width;
+
+        // constructor taking length, width, and point representing the center
+        public Rectangle(double _length, double _width, Point _center)
+        {
+            length = _length;
+            width = _width;
+            center = _center;
+
+            // set corner Points based on length
+            double centerX = center.X;
+            double centerY = center.Y;
+            corner0 = new Point(centerX - width / 2, centerY - length / 2);
+            corner1 = new Point(centerX + width / 2, centerY - length / 2);
+            corner2 = new Point(centerX + width / 2, centerY + length / 2);
+            corner3 = new Point(centerX - width / 2, centerY + length / 2);
+
+            // set Lines connecting the corners
+            line0 = new Line(corner0, corner1);
+            line1 = new Line(corner1, corner2);
+            line2 = new Line(corner2, corner3);
+            line3 = new Line(corner3, corner0);
+
+            // we now have data representing the center, 4 corners, and lines connecting them -luke
+        }
+
+    }
+
     public class Circle
     {
         private Point location;
