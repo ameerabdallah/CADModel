@@ -136,7 +136,8 @@ namespace Model.Models
         // moves the center and resets the data based on the new center
         void setLocation(Point targetCenter)
         {
-            center = targetCenter;
+            center.X = targetCenter.X;
+            center.Y = targetCenter.Y;
             setCornersFromCenter();
             setLinesFromCorners();
         }
