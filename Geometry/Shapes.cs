@@ -24,6 +24,14 @@ namespace Model.Models
             this.Y = Y;
             this.Z = Z;
         }
+
+        // copy constructor
+        public Point(Point fromPoint)
+        {
+            this.X = fromPoint.X;
+            this.Y = fromPoint.Y;
+            this.Z = fromPoint.Z;
+        }
     }
 
     public class Line
@@ -43,6 +51,7 @@ namespace Model.Models
             this.setPoints(startPoint, endPoint);
         }
 
+        // copy constructor
         public Line(Line line2)
         {
             this.setPoints(line2.StartPoint, line2.EndPoint);
@@ -57,12 +66,14 @@ namespace Model.Models
 
     public class Rectangle
     {
-        Point corner0, corner1, corner2, corner3;
+        
         Point center;
+        double length;
+        double width;
+        public double Length { get; set; }
+        Point corner0, corner1, corner2, corner3;
         Line line0, line1, line2, line3;
-        double length, width;
-
-
+       
         // constructor taking length, width, and point representing the center
         public Rectangle(double _length, double _width, Point _center)
         {
@@ -70,30 +81,57 @@ namespace Model.Models
             width = _width;
             center = _center;
 
+            init();
+
             setCornersFromCenter();
             setLinesFromCorners();
 
             // we now have data representing the center, 4 corners, and lines connecting them -luke
         }
 
-        // set corner Points based on length
+        // default constructor
+        public Rectangle()
+        {
+            new Rectangle(0, 0, new Point());
+        }
+
+        // copy constructor
+        public Rectangle(Rectangle fromRect)
+        {
+            new Rectangle(fromRect.getLength(), fromRect.getWidth(), fromRect.getCenter());
+        }
+
+        // initialize corners and lines with new memory
+        void init()
+        {
+            corner0 = new Point();
+            corner1 = new Point();
+            corner2 = new Point();
+            corner3 = new Point();
+            line0 = new Line();
+            line1 = new Line();
+            line2 = new Line();
+            line3 = new Line();
+        }
+
+        // set coordinates of corner Points based on length and width
         void setCornersFromCenter()
         {
             double centerX = center.X;
             double centerY = center.Y;
-            corner0 = new Point(centerX - width / 2, centerY - length / 2);
-            corner1 = new Point(centerX + width / 2, centerY - length / 2);
-            corner2 = new Point(centerX + width / 2, centerY + length / 2);
-            corner3 = new Point(centerX - width / 2, centerY + length / 2);
+            corner0.X = centerX - width / 2; corner0.Y = centerY - length / 2;
+            corner0.X = centerX + width / 2; corner0.Y = centerY - length / 2;
+            corner0.X = centerX + width / 2; corner0.Y = centerY + length / 2;
+            corner0.X = centerX - width / 2; corner0.Y = centerY + length / 2;
         }
 
         // set Lines connecting the corners
         void setLinesFromCorners()
         {
-            line0 = new Line(corner0, corner1);
-            line1 = new Line(corner1, corner2);
-            line2 = new Line(corner2, corner3);
-            line3 = new Line(corner3, corner0);
+            line0.setPoints(corner0, corner1);
+            line1.setPoints(corner1, corner2);
+            line2.setPoints(corner2, corner3);
+            line3.setPoints(corner3, corner0);
         }
 
         // moves the center and resets the data based on the new center
@@ -102,6 +140,20 @@ namespace Model.Models
             center = targetCenter;
             setCornersFromCenter();
             setLinesFromCorners();
+        }
+
+        // getters
+        public Point getCenter()
+        {
+            return center;
+        }
+        public double getLength()
+        {
+            return length;
+        }
+        public double getWidth()
+        {
+            return width;
         }
 
 
