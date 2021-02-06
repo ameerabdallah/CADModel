@@ -70,7 +70,6 @@ namespace Model.Models
         Point center;
         double length;
         double width;
-        public double Length { get; set; }
         Point corner0, corner1, corner2, corner3;
         Line line0, line1, line2, line3;
        

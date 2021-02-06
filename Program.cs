@@ -11,7 +11,7 @@ namespace Model
             /*TODO: 
              * Create Point Object ✔
              * Create Line Object ✔
-             * Create Rectangle Object 
+             * Create Rectangle Object ✔
              * Create Polygon
              * Create Circle ✔
              * Create Ellipse ✔
