@@ -62,6 +62,7 @@ namespace Model.Models
         Line line0, line1, line2, line3;
         double length, width;
 
+
         // constructor taking length, width, and point representing the center
         public Rectangle(double _length, double _width, Point _center)
         {
@@ -69,22 +70,40 @@ namespace Model.Models
             width = _width;
             center = _center;
 
-            // set corner Points based on length
+            setCornersFromCenter();
+            setLinesFromCorners();
+
+            // we now have data representing the center, 4 corners, and lines connecting them -luke
+        }
+
+        // set corner Points based on length
+        void setCornersFromCenter()
+        {
             double centerX = center.X;
             double centerY = center.Y;
             corner0 = new Point(centerX - width / 2, centerY - length / 2);
             corner1 = new Point(centerX + width / 2, centerY - length / 2);
             corner2 = new Point(centerX + width / 2, centerY + length / 2);
             corner3 = new Point(centerX - width / 2, centerY + length / 2);
+        }
 
-            // set Lines connecting the corners
+        // set Lines connecting the corners
+        void setLinesFromCorners()
+        {
             line0 = new Line(corner0, corner1);
             line1 = new Line(corner1, corner2);
             line2 = new Line(corner2, corner3);
             line3 = new Line(corner3, corner0);
-
-            // we now have data representing the center, 4 corners, and lines connecting them -luke
         }
+
+        // moves the center and resets the data based on the new center
+        void setLocation(Point targetCenter)
+        {
+            center = targetCenter;
+            setCornersFromCenter();
+            setLinesFromCorners();
+        }
+
 
     }
 
