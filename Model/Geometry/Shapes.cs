@@ -8,7 +8,7 @@ using System.Numerics;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model.Models
+namespace Model
 {
     public class Point
     {
@@ -64,6 +64,9 @@ namespace Model.Models
         }
     }
 
+    /// <summary>
+    /// remove
+    /// </summary>
     public class Rectangle
     {
         
